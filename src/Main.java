@@ -25,27 +25,26 @@ public class Main {
         }
     }
 
+    public static int leerIntInput(Scanner scanner, String fieldName) {
+        while (true) {
+            if (scanner.hasNextInt()) {
+                return scanner.nextInt();
+            } else {
+                System.out.println("Error: La entrada para '" + fieldName + "' no es un numero entero.");
+                scanner.next(); // Clear invalid input
+            }
+        }
+    }
+
     // turno del jugador humano
-    public static void jugadorUsuario() {
+    public static void jugadorUsuario(Scanner scanner) {
         int fila, columna;
         while (true) {
             System.out.println("es tu turno. Ingresa fila y columna (0, 1, 2) separados por espacio: ");
-            // fila
-            if (scanner.hasNextInt()) {
-                fila = scanner.nextInt();
-            } else {
-                System.out.println("Error: La entrada para 'fila' no es un número entero.");
-                scanner.next();
-                return;
-            }
-            // columna
-            if (scanner.hasNextInt()) {
-                columna = scanner.nextInt();
-            } else {
-                System.out.println("Error: La entrada para 'columna' no es un número entero.");
-                scanner.next();
-                return;
-            }
+
+             fila = leerIntInput(scanner, "fila");
+             columna = leerIntInput(scanner, "columna");
+
             if (fila >= 0 && fila < 3 && columna >= 0 && columna < 3 && matriz[fila][columna] == '_') {
                 matriz[fila][columna] = 'X';
                 break;
@@ -113,7 +112,7 @@ public class Main {
             while (!juegoTerminado) {
                 mostrarMatriz();
                 if (jugador == 'X') {
-                    jugadorUsuario();
+                    jugadorUsuario(scanner);
                     juegoTerminado = verificarGanador('X');
                     jugador = 'O'; // turno de la computadora
                 } else {
