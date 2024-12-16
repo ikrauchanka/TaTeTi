@@ -6,7 +6,7 @@ public class Main {
     static Scanner scanner = new Scanner(System.in);
 
 
-    // Inicializa el tablero con '_'
+    // inicializar el tablero con '_'
     public static void inicializarMatriz() {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
@@ -25,14 +25,27 @@ public class Main {
         }
     }
 
-    // Turno del jugador humano
+    // turno del jugador humano
     public static void jugadorUsuario() {
         int fila, columna;
         while (true) {
             System.out.println("es tu turno. Ingresa fila y columna (0, 1, 2) separados por espacio: ");
-            fila = scanner.nextInt();
-            columna = scanner.nextInt();
-
+            // fila
+            if (scanner.hasNextInt()) {
+                fila = scanner.nextInt();
+            } else {
+                System.out.println("Error: La entrada para 'fila' no es un número entero.");
+                scanner.next();
+                return;
+            }
+            // columna
+            if (scanner.hasNextInt()) {
+                columna = scanner.nextInt();
+            } else {
+                System.out.println("Error: La entrada para 'columna' no es un número entero.");
+                scanner.next();
+                return;
+            }
             if (fila >= 0 && fila < 3 && columna >= 0 && columna < 3 && matriz[fila][columna] == '_') {
                 matriz[fila][columna] = 'X';
                 break;
