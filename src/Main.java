@@ -107,7 +107,7 @@ public class Main {
 
         while (true) {
             inicializarMatriz();
-            char jugador = 'X';  // usuario siempre empiezar con 'X'
+            char jugador = 'X';  // usuario siempre empezar con 'X'
             boolean juegoTerminado = false;
 
             while (!juegoTerminado) {
