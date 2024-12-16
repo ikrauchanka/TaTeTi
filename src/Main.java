@@ -31,7 +31,7 @@ public class Main {
                 return scanner.nextInt();
             } else {
                 System.out.println("Error: La entrada para '" + fieldName + "' no es un numero entero.");
-                scanner.next(); // Clear invalid input
+                scanner.next();
             }
         }
     }
